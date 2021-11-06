@@ -4,8 +4,9 @@ class BotConfig:
     APP_NAME = 'schedulebot'
     OWNER_ID = 0
     DEFAULT_LANG = 'en_US'
-    abb_days = ["monday", "saturday"]
     locales = os.listdir("locale")
+    
+    abb_days = ["monday", "saturday"]
 
 class DevelopmentConfig:
     API_TOKEN = os.getenv("API_TOKEN")

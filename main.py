@@ -12,6 +12,7 @@ if env == "dev":
 else:
     config = cnf.ProductionConfig
 
+
 bot = Bot(token=config.API_TOKEN)
 dp = Dispatcher(bot=bot)
 pg = PostgreSQLDatabase(os.getenv("DATABASE_URL"))
@@ -29,16 +30,27 @@ async def startMessage(message: types.Message):
 
 @dp.message_handler(commands=["help"])
 async def helpMessage(message: types.Message):
+    base.LangSwitch(message)
+
+    await message.reply(base.HELP_MESSAGE_TEXT)
     return
 
 @dp.message_handler(commands=["lang"])
 async def langMessage(message: types.Message):
+    base.LangSwitch(message)
     if message.get_args() and message.get_args() in cnf.BotConfig.locales:
         pg.setUserLocale(message.from_user, message.get_args()[0])
         return
     
     await message.answer(base.CHANGE_LANG_TEXT)
 
+@dp.message_handler(commands=["change"], is_owner=True, is_reply=True)
+async def changeMessage(message: types.Message):
+    base.LangSwitch(message)
+
+    reply_to_message = message.reply_to_message
+    classroom = reply_to_message.text
+    pass
 
 if __name__ == "__main__":
     executor.start_polling(dispatcher=dp, skip_updates=True)
@@ -60,7 +72,7 @@ user = {
     'supports_inline_queries': True
 }
 user = User(**user)
-print(pg.getUser(user))
+# print(pg.getUser(user))
 """
 timetable_example = "\nSubject: {}\nTeacher: {}\nTime: {}"
 weekday = "monday"

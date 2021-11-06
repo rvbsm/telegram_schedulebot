@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-04 19:08+0200\n"
-"PO-Revision-Date: 2021-11-04 19:29+0200\n"
+"POT-Creation-Date: 2021-11-05 02:18+0200\n"
+"PO-Revision-Date: 2021-11-05 13:49+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: ru_RU\n"
 
-#: main.py:7
-msgid "This is translatable string"
-msgstr "Это переводимая строка"
+#: base.py:15
+msgid "Hello"
+msgstr "Привет, {}! Я {}!"
+
+#: base.py:16
+msgid "Nice to see you again"
+msgstr "Приятно видеть тебя снова здесь!"
+
+#: base.py:17
+msgid "ru_RU or en_US?"
+msgstr "Русский или Английский?"
