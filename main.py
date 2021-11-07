@@ -176,4 +176,4 @@ async def on_startup(dp):
 
 if __name__ == "__main__":
     pg.createTables()
-    executor.start_webhook(dispatcher=dp, webhook_path=cnf.WebhookConfig.WEBHOOK_PATH, skip_updates=False, on_startup=on_startup, host='0.0.0.0', port=os.getenv("PORT"))
+    executor.start_webhook(dispatcher=dp, webhook_path=cnf.WebhookConfig.WEBHOOK_PATH, skip_updates=True, on_startup=on_startup, host='0.0.0.0', port=os.getenv("PORT"))
