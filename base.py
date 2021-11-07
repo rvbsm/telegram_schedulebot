@@ -23,7 +23,7 @@ class IsOwner(BoundFilter):
 
 
 def BuildTable(table: list[list[str]], weekday: str, classroom: str):
-    time = pg.getTime(WEEKDAYS[WEEKDAY_LIST.index(weekday)] in ABB_DAYS)
+    time = pg.getTime(weekday in ABB_DAYS)
 
     for n, t in zip(range(len(table)), time):
         table[n].append(t)
