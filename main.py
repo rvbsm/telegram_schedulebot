@@ -58,7 +58,7 @@ async def changeTableMessage(message: types.Message, state: FSMContext):
     reply_to_message = message.reply_to_message.text.lower()
     classroom, weekday = '', '' # message.get_args().split()
     
-    for w in _(base.WEEKDAY_LIST):
+    for w in base.WEEKDAY_LIST:
         if w.lower() in reply_to_message:
             weekday = w
             break
