@@ -1,7 +1,7 @@
 import os
 
 class BotConfig:
-    APP_NAME = 'schedulebot'
+    APP_NAME = 'fivelyceum-schedulebot'
     OWNER_ID = 200635302
     DEFAULT_LANG = 'en_US'
     locales = os.listdir("locale")
