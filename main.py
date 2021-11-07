@@ -58,7 +58,7 @@ async def changeTableMessage(message: types.Message, state: FSMContext):
     reply_to_message = message.reply_to_message.text.lower()
     classroom, weekday = '', '' # message.get_args().split()
     
-    for w in base.WEEKDAYS:
+    for w in base.WEEKDAY_LIST:
         if w.lower() in reply_to_message:
             weekday = w
             break
@@ -76,7 +76,7 @@ async def changeTableMessage(message: types.Message, state: FSMContext):
     
     async with state.proxy() as data:
         data['classroom'] = classroom
-        data['weekday'] = weekday
+        data['weekday'] = base.WEEKDAYS[base.WEEKDAY_LIST.index(weekday)]
 
         await message.answer(base.CHANGE_TABLE_TEXT.format(classroom=data['classroom'], weekday=data['weekday']))
 
