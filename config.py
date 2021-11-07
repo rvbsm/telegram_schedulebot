@@ -2,11 +2,11 @@ import os
 
 class BotConfig:
     APP_NAME = 'schedulebot'
-    OWNER_ID = 0
+    OWNER_ID = 200635302
     DEFAULT_LANG = 'en_US'
     locales = os.listdir("locale")
     
-    abb_days = ["monday", "saturday"]
+    class_list= list(str(i) + '-' + n for i in range(6, 12) for n in ["А", "Б", "В"])
 
 class DevelopmentConfig:
     API_TOKEN = os.getenv("API_TOKEN")

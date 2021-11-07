@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-11-07 16:25+0200\n"
+"PO-Revision-Date: 2021-11-07 16:33+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Language: ru_RU\n"
+
+#: base.py:56
+msgid "Friday"
+msgstr "Пятница"
+
+#: base.py:56
+msgid "Monday"
+msgstr "Понедельник"
+
+#: base.py:56
+msgid "Saturday"
+msgstr "Суббота"
+
+#: base.py:56
+msgid "Thursday"
+msgstr "Четверг"
+
+#: base.py:56
+msgid "Tuesday"
+msgstr "Вторник"
+
+#: base.py:56
+msgid "Wednesday"
+msgstr "Среда"
+
+#: base.py:58
+msgid "Schedule on {weekday}:\n"
+msgstr "Расписание на {weekday}:\n"
+
+#: base.py:59
+msgid ""
+"\n"
+"Subject: {}\n"
+"Teacher: {}\n"
+"Time: {}"
+msgstr ""
+"\n"
+"Предмет: {}\n"
+"Учитель: {}\n"
+"Время: {}"
+
+#: base.py:61
+msgid "Nice to see you again"
+msgstr "Привет, рад тебя видеть вновь!"
+
+#: base.py:62
+msgid "Available languages:"
+msgstr "Доступные языки:"
+
+#: base.py:63
+msgid ""
+"Write the new table for {classroom} on {weekday}\n"
+" \"Subject/Teacher|Subject/Teacher\" or \"Subject, Subject/Teacher, Teacher\""
+msgstr ""
+"Введи новую запись для {classroom} на {weekday}\n"
+"\"Предмет/Учитель|Предмет/Учитель\" или \"Предмет, Предмет/Учитель, Учитель\""
+
+#: base.py:64
+msgid "Timetable looks like this: {}"
+msgstr "Расписание будет выглядеть так: {}"
+
+#: base.py:65
+msgid "Updated timetable"
+msgstr "Обновлено расписание"
+
+#: base.py:66
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+#: base.py:67
+msgid "This is an help message"
+msgstr "Это сообщение помощи, пока не написал"
+
+#: base.py:68
+msgid "What class are you from?"
+msgstr "Из какого ты класса?"
+
+#: base.py:69
+msgid "What day of the week?"
+msgstr "Какой день недели?"
+
+#: base.py:72
+msgid "My Schedule"
+msgstr "Моё расписание"
+
+#: base.py:73
+msgid "Friend's Schedule"
+msgstr "Расписание друга"
+
+#: base.py:74
+msgid "Change classroom"
+msgstr "Сменить класс"
+
+#: base.py:75
+msgid "Change language"
+msgstr "Сменить язык"
+
+#: base.py:77
+msgid "Developer"
+msgstr "Разработчик"
+
+#: base.py:79
+msgid "Apply"
+msgstr "Принять"
+
+#: base.py:80
+msgid "Cancel"
+msgstr "Отменить"

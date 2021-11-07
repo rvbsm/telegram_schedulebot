@@ -1,8 +1,10 @@
 from aiogram.types import User
+from aiogram.dispatcher.storage import FSMContextProxy
 import psycopg2
 import psycopg2.extras
 import datetime
 from os import listdir
+from config import BotConfig
 
 class PostgreSQLDatabase:
     def __init__(self, database_url: str):
@@ -20,11 +22,6 @@ class PostgreSQLDatabase:
                 locale TEXT,
                 join_time TIMESTAMP
                 )''')
-
-        class_list = []
-        for i in range(6, 12):
-            for n in ["А", "Б", "В"]:
-                class_list.append(str(i) + '-' + n)
         
         self.curs.execute('''
             CREATE TABLE IF NOT EXISTS timetable (
@@ -36,12 +33,13 @@ class PostgreSQLDatabase:
                 Friday TEXT DEFAULT '{temp}',
                 Saturday TEXT DEFAULT '{temp}')'''.format(temp="S/T|S/T"))
 
-        for c in class_list:
+        for c in BotConfig.class_list:
             self.curs.execute('''INSERT INTO timetable (classroom) VALUES(%s) ON CONFLICT (classroom) DO NOTHING''', (c,))
 
         self.curs.execute('''
             CREATE TABLE IF NOT EXISTS time (
                 abb BOOLEAN,
+                zero TEXT,
                 first TEXT,
                 second TEXT,
                 third TEXT,
@@ -57,7 +55,7 @@ class PostgreSQLDatabase:
             user.username = user.full_name
 
         if user.language_code not in listdir("locale"):
-            user.language_code = "ru_RU"
+            user.language_code = "ru"
 
         self.curs.execute('''INSERT INTO "users" 
             ("id", "username", "locale", "join_time") 
@@ -86,25 +84,27 @@ class PostgreSQLDatabase:
 
         return result[1:]
     
-    def setTimetable(self, classroom: str, weekday: str):
-        return
-
+    def setTimetable(self, data: FSMContextProxy):
+        self.createTables()
+        return self.curs.execute('''UPDATE timetable SET {weekday} = %s WHERE classroom = %s'''.format(weekday=data['weekday']), 
+            (data['table'], data['classroom']))
 
     def getTimetable(self, user: User, weekday: str) -> list[list[str]]:
         classroom = self.getUser(user)["classroom"]
-        if weekday == "sunday":
+        if weekday == "Sunday":
             return
         
         self.curd.execute('''SELECT * FROM timetable WHERE classroom = %s''', (classroom, ))
 
         result = self.curd.fetchone()
-        result = result[weekday]
+        result = result[weekday.lower()]
         result = result.split('|')
 
         for r in result:
             if r == result[0]:
                 result = []
 
+
             result.append(r.split('/'))
-        
+
         return result
