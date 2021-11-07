@@ -7,6 +7,7 @@ from aiogram.types import User
 from database.postgresql import PostgreSQLDatabase
 import config as cnf
 import keyboard
+import logging
 import base
 import sys, os
 
@@ -17,6 +18,7 @@ if env == "dev":
 else:
     config = cnf.ProductionConfig
 
+logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=config.API_TOKEN)
 storage = MemoryStorage()
