@@ -19,5 +19,5 @@ class ProductionConfig:
 
 class WebhookConfig:
     REPO_NAME = BotConfig.APP_NAME
-    WEBHOOK_PATH = "/webhook/{DevelopmentConfig.API_TOKEN}"
+    WEBHOOK_PATH = f"/webhook/{DevelopmentConfig.API_TOKEN}"
     WEBHOOK_URL = f'https://{REPO_NAME}.herokuapp.com' + WEBHOOK_PATH
