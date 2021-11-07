@@ -167,24 +167,10 @@ async def changeTableCallback(call: types.callback_query, state: FSMContext):
     
     await state.finish()
 
+async def on_startup(dp):
+    await bot.delete_webhook()
+
+    await bot.set_webhook(cnf.WebhookConfig.WEBHOOK_URL)
+
 if __name__ == "__main__":
-    executor.start_polling(dispatcher=dp, skip_updates=True)
-
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # #
-
-user = {
-    'id': 200635301,
-    'is_bot': False,
-    'first_name': "Руслан",
-    'last_name': "",
-    'username': "rvbsm",
-    'language_code': "en_US",
-    'can_join_groups': True,
-    'can_read_all_group_messages': True,
-    'supports_inline_queries': True
-}
-user = User(**user)
-# print(pg.getUser(user))
+    executor.start_webhook(dispatcher=dp, webhook_path=cnf.WebhookConfig.WEBHOOK_PATH, skip_updates=False, on_startup=on_startup, host='0.0.0.0')
